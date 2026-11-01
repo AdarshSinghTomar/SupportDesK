@@ -62,24 +62,24 @@ public class TicketController {
     // }
     // now fixing url logic as it wants tickets and we are giving him 
     // one ticket instead we should return collection of tickets for ticket
-         @GetMapping("/api/tickets")
-         public List<TicketResponse> getTickets()
-         {
-           TicketResponse ticket1 = new TicketResponse(1L,"Unable to Log in ","Open");
-           TicketResponse ticket2 = new TicketResponse(1L,"Unable to Log in ","Open");
-           List<TicketResponse> ls  = new ArrayList<>();
-        //    ls.add(ticket1);
-        //    ls.add(ticket2);
-        //    return ls; 
-            return List.of(ticket1,ticket2);
+        // //  @GetMapping("/api/tickets")
+        //  public List<TicketResponse> getTickets()
+        //  {
+        //    TicketResponse ticket1 = new TicketResponse(1L,"Unable to Log in ","Open");
+        //    TicketResponse ticket2 = new TicketResponse(1L,"Unable to Log in ","Open");
+        //    List<TicketResponse> ls  = new ArrayList<>();
+        // //    ls.add(ticket1);
+        // //    ls.add(ticket2);
+        // //    return ls; 
+        //     return List.of(ticket1,ticket2);
 
-         }
-          @GetMapping("/api/tickets/{id}")
-          public TicketResponse getTicketByID(@PathVariable Long id)
-          { 
-             return new TicketResponse(id,"Unable to login","Open");
+        //  }
+        //   @GetMapping("/api/tickets/{id}")
+        //   public TicketResponse getTicketByID(@PathVariable Long id)
+        //   { 
+        //      return new TicketResponse(id,"Unable to login","Open");
             
-          }
+        //   }
           // deserialization json to java object 
 //           @PostMapping("/api/tickets")
 //                   //@RequestBody understands:
@@ -139,5 +139,18 @@ A class says what object it needs, and Spring provides that object instead of th
   public TicketResponse createTicket(@Valid @RequestBody TicketCreateRequest request){
      return ticketService.createTicket(request);
   }
+  // NOW DOING SAME FOR GET METHODS
+    @GetMapping("/api/tickets")
+         public List<TicketResponse> getTickets()
+         {
+           return ticketService.getAllTickets();
+         }
+  
+          @GetMapping("/api/tickets/{id}")
+          public TicketResponse getTicketByID(@PathVariable Long id)
+          { 
+             return ticketService.getTicketById(id);
+            
+          }
 
 }

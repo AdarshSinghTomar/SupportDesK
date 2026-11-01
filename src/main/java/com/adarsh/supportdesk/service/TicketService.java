@@ -50,4 +50,13 @@ public class TicketService {
 
     return List.of(ticket1, ticket2);
 }
+public TicketResponse getTicketById(Long id) {
+
+    return new TicketResponse(
+            id,
+            "Unable to login",
+            "OPEN"
+    );
+}
+
 }
