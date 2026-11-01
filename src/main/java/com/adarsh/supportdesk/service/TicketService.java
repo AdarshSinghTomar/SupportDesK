@@ -1,5 +1,8 @@
 package com.adarsh.supportdesk.service;
 import com.adarsh.supportdesk.dto.*;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 @Service 
 //“Spring, this class contains application/business logic and I want you to manage its object
@@ -23,9 +26,28 @@ For now:
 Bean
 =
 an object created and managed by Spring */
+
 public class TicketService {
     public TicketResponse createTicket(TicketCreateRequest request)
     {
         return new TicketResponse(3L,request.title(),"OPEN");
     }
+    public List<TicketResponse> getAllTickets() {
+
+    TicketResponse ticket1 =
+            new TicketResponse(
+                    1L,
+                    "Unable to login",
+                    "OPEN"
+            );
+
+    TicketResponse ticket2 =
+            new TicketResponse(
+                    2L,
+                    "Payment failed",
+                    "IN_PROGRESS"
+            );
+
+    return List.of(ticket1, ticket2);
+}
 }
