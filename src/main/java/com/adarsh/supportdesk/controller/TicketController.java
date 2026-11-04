@@ -101,7 +101,7 @@ public class TicketController {
 // now we get to know about dependency injection 
  // as order dont matter in java we can create anywhere 
  // but always do it initially for readibilty
- // why final we dont want change the character of this servicde to someother one 
+ // why final we dont want change the character of this service to someother one 
  private final TicketService ticketService;
  // calling ticketcontroller constructore to get ticketservice 
  public TicketController(TicketService ticketService)

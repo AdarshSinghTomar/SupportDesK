@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.http.HttpStatus;
 
 import com.adarsh.supportdesk.dto.ValidationErrorResponse;
+import com.adarsh.supportdesk.dto.ErrorResponse;
+import com.adarsh.supportdesk.exception.TicketNotFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -35,4 +37,11 @@ public class GlobalExceptionHandler {
                 errors
         );
     }
+  @ExceptionHandler(TicketNotFoundException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ErrorResponse handleTicketNotFound(TicketNotFoundException exception)
+  {
+        return new ErrorResponse(exception.getMessage());
+  }
+  
 }
